@@ -81,6 +81,16 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'postgres',
+#         'USER': 'postgres',
+#         'PASSWORD': 'root',
+#         'HOST': 'localhost',
+#
+#     }
+# }
 
 
 # Password validation
@@ -124,3 +134,4 @@ STATICFILES_DIRS=[os.path.join(BASE_DIR,'assets'),]
 
 #Authentication
 LOGIN_URL = 'users:login'
+LOGIN_REDIRECT_URL = 'users:dashboard'
