@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 {% extends 'layout.html' %}
+{% load thoughts_tags %}
 {% block title %}Dashboard | {{block.super}}{% endblock %}
  {% block content %}}
 <style>
@@ -8,6 +9,7 @@
     /*}*/
 </style>
 <div class="container">
+    {% thought_form %}
     <h1>Dashboard</h1>
 </div>
 {% endblock %}
