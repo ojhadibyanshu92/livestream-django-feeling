@@ -2,10 +2,12 @@
 {% load bootstrap3 %}
 <div class="container">
 
-<form method="post" action="#">
-    <h2>How're you Feeling?</h2>
-    {% bootstrap_form form %}
+<form method="POST" action="{% url 'thoughts:create' %}">
+    <h2>How're you feeling?</h2>
     {% csrf_token %}
-    <input type="submit" value="Record" class="btn btn-success">
+    <div class="row">
+        {% bootstrap_form form %}
+        {% buttons submit='Record' %}{% endbuttons %}
+    </div>
 </form>
 </div>
