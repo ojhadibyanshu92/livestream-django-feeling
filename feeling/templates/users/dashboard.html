@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 {% extends 'layout.html' %}
+{% load static from staticfiles %}
 {% load thoughts_tags %}
 {% block title %}Dashboard | {{block.super}}{% endblock %}
  {% block content %}}
@@ -25,4 +26,7 @@
     </div>
 </div>
 
+{% endblock %}
+{% block js %}
+<script src="{% static 'js/stretchy.js'%}" async></script>
 {% endblock %}
