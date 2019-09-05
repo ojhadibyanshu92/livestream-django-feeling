@@ -22,6 +22,7 @@ class Dashboard(
         return self.request.user
 
 
+
 class LogoutView(LoginRequiredMixin,generic.FormView):
     form_class = forms.LogoutForm
     template_name='users/logout.html'
