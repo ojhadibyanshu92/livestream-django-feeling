@@ -7,7 +7,6 @@ class Group(models.Model):
     created_by = models.ForeignKey(User,related_name='%(class)s_created')
     name= models.CharField(max_length=225)
     description = models.TextField(default='')
-
     class Meta:
         abstract = True
 class Family(Group):
