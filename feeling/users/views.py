@@ -35,7 +35,5 @@ class SignupView(generic.CreateView):
     template_name = 'users/signup.html'
     success_url = reverse_lazy('users:dashboard')
 
-class CompanyCreate(LoginRequiredMixin,generic.CreateView):
-    form_class = forms.CompanyForm
-    template_name = 'users/company_form.html'
 
+             
