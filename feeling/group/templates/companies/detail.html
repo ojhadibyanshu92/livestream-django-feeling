@@ -16,7 +16,7 @@
             <h3>{{object.name}}</h3>
             {{object.description|linebreaks}}
             {% if user == object.created_by %}<hr>
-            <a href="{% url 'group:companies:update' slug=object.slug %}" class="btn btn-denger">Edit</a>
+            <a href="{% url 'group:companies:update' slug=object.slug %}" class="btn btn-danger">Edit</a>
             {% endif %}
         </div>
         <div class="col-md-6">

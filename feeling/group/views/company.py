@@ -11,7 +11,7 @@ class Create(LoginRequiredMixin,SetHeadlineMixin,generic.CreateView):
     form_class = forms.CompanyForm
     headline= 'Create Company'
     success_url = reverse_lazy('users:dashboard')
-    template_name = 'company/form.html'
+    template_name = 'companies/form.html'
 
     def form_valid(self,form):
         form.instance.created_by = self.request.user
@@ -22,7 +22,7 @@ class Create(LoginRequiredMixin,SetHeadlineMixin,generic.CreateView):
 class Update(LoginRequiredMixin,SetHeadlineMixin,generic.UpdateView):
     form_class = forms.CompanyForm
     success_url = reverse_lazy('users:dashboard')
-    template_name = 'company/form.html'
+    template_name = 'companies/form.html'
 
     def get_queryset(self):
         return self.request.user.companies.all()
@@ -33,7 +33,7 @@ class Update(LoginRequiredMixin,SetHeadlineMixin,generic.UpdateView):
 
 
 class Detail(LoginRequiredMixin,generic.DetailView):
-    template_name = 'company/detail.html'
+    template_name = 'companies/detail.html'
 
     def get_queryset(self):
         return self.request.user.companies.all()

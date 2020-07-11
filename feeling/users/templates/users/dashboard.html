@@ -1,10 +1,18 @@
 <!DOCTYPE html>
 {% extends 'layout.html' %}
 {% load static from staticfiles %}
-{% load thoughts_tags %}
+<!--{% load thoughts_tags %}-->
 {% block title %}Dashboard | {{block.super}}{% endblock %}
 {% block content %}}
+<style>
+    .row {
+        margin-top: 15px;
+    }
 
+    #row1 {
+        margin-left: auto;
+    }
+</style>
 <div class="container">
     <div class="row">
 
@@ -24,20 +32,23 @@
                 {% endfor %}
             </div>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-4 offset-md-1" id="row1">
             {% thought_form %}
         </div>
     </div>
     <div class="row">
         <div class="col-md-6">
             <div class="ct-chart ct-perfect-fourth"></div>
+{#            {%  chart_data as email %}#}
+{#            {{ email }}#}
         </div>
         <div class="col-md-6">
             <h3>Companies</h3>
             <div class="list-group">
                 {% for company in user.companies.all %}
-                <a href="{% url 'group:companies:detail' slug=company.slug %}" class="list-group-item" >{{company.name}}</a>
-               {% endfor %}
+                <a class="list-group-item"
+                   href="{% url 'group:companies:detail' slug=company.slug %}">{{company.name}}</a>
+                {% endfor %}
             </div>
         </div>
     </div>
@@ -45,11 +56,11 @@
 
 {% endblock %}
 {% block css %}
-<link href="{% static 'js/chartist/chartist.min.css'%}" rel="stylesheet">
+<link href="{% static 'js/chartist/chartist.min.css' %}" rel="stylesheet">
 {% endblock %}
 {% block js %}
-<script async src="{% static 'js/stretchy.js'%}"></script>
-<script src="{% static 'js/chartist/chartist.min.js'%}"></script>
+<script async src="{% static 'js/stretchy.js' %}"></script>
+<script src="{% static 'js/chartist/chartist.min.js' %}"></script>
 <script>
     var data = {
         labels: ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'],
