@@ -17,6 +17,7 @@
             {{object.description|linebreaks}}
             {% if user == object.created_by %}<hr>
             <a href="{% url 'group:families:update' slug=object.slug %}" class="btn btn-danger">Edit</a>
+
             {% endif %}
         </div>
         <div class="col-md-6">

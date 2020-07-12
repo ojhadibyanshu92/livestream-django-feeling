@@ -23,12 +23,18 @@ class Family(Group):
     class Meta:
         verbose_name_plural = 'families'
 
+    def __str__(self):
+        return self.name
+
 
 class Company(Group):
     members = models.ManyToManyField(User, related_name='companies')
 
     class Meta:
         verbose_name_plural = 'companies'
+
+    def __str__(self):
+        return self.name
 
 
 
@@ -56,9 +62,19 @@ class Invite(models.Model):
             self.uuid = uuid.uuid4().hex
         super().save(*args, **kwargs)
 
+    def __str__(self):
+        return f'{self.to_user} invited by {self.from_user}'
+
 class CompanyInvite(Invite):
     company = models.ForeignKey(Company,related_name='invites')
+
+    def __str__(self):
+        return f'{self.to_user} invited to {self.company} by {self.from_user}'
 
 
 class FamilyInvite(Invite):
     company = models.ForeignKey(Family, related_name='invites')
+
+    def __str__(self):
+        return f'{self.to_user} invited to {self.family} by {self.from_user}'
+

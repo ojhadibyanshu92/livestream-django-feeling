@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{% load bootstrap3 %}
+<style>
+    .row {
+        margin-top: 185px;
+    }
+</style>
+{% block title %}Invites | {{ block.super }}{% endblock %}
+
+{% block content %}
+    <style>
+    .row {
+        margin-top: 185px;
+    }
+</style>
+    <div class="container pt">
+        <div class="row">
+            <div class="col-md-6">
+             <ul>
+                 {% for invite in invites %}
+                     <li><a href="#">{{ invite.company }} by {{ invite.from_user }}</a></li>
+                 {% endfor %}
+             </ul>
+            </div>
+        </div>
+    </div>
+{% endblock %}
