@@ -1,2 +1,2 @@
-# from . company import *
+# from . companies import *
 # from . family import *

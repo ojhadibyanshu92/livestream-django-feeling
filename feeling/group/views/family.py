@@ -1,5 +1,5 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import render
+from django.shortcuts import render,reverse
 from django.urls import reverse_lazy
 from django.views import generic
 from braces.views import SetHeadlineMixin
@@ -29,6 +29,9 @@ class Update(LoginRequiredMixin,SetHeadlineMixin,generic.UpdateView):
 
     def get_headline(self):
         return f'Edit {self.object.name}'
+    # if u uncoment the bellow line then after edit and save redirected to again edit page
+    # def get_success_url(self):
+    #     return reverse('group:families:detail',kwargs={'slug':self.object.slug})
 
 
 
