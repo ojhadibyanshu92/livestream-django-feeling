@@ -26,6 +26,7 @@ SECRET_KEY = '3!jza62z_&6@oe7_y-6w-4w9pp7-3915aly_yif^y12$flq(^3'
 DEBUG = True
 
 ALLOWED_HOSTS = []
+INTERNAL_IPS = ['127.0.0.1']
 
 
 # Application definition
@@ -40,6 +41,7 @@ INSTALLED_APPS = [
     'bootstrap3',
     'users',
     'thoughts',
+    'debug_toolbar',
     'group',
 ]
 
@@ -47,6 +49,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
