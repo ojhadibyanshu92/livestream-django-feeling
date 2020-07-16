@@ -51,31 +51,32 @@
                     <a aria-expanded="false" aria-haspopup="true" class="dropdown-toggle" data-toggle="dropdown"
                        href="#"
                        role="button">Companies <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="{% url 'group:companies:invites' %}">Invitations</a></li>
-                        <li><a href="{% url 'group:companies:create' %}">Create company</a></li>
-                        {% for company in users.companies.all %}
-                            <li><a href="{% url 'group:companies:details' slug=comapny.slug %}">{{ company.name }}</a>
+                      <ul class="dropdown-menu">
+                            {% for company in user.companies.all %}
+                                <li><a href="{% url 'group:companies:detail' slug=company.slug %}">{{ company.name }}</a></li>
+                            {% endfor %}
+                            <li role="separator" class="divider"></li>
+                            <li>
+                                <a href="{% url 'group:companies:invites' %}">Invitations</a>
+                                <a href="{% url 'group:companies:create' %}">Create New</a>
                             </li>
-                        {% endfor %}
-                    </ul>
+                        </ul>
                 </li>
 
                 <li class="dropdown">
                     <a aria-expanded="false" aria-haspopup="true" class="dropdown-toggle" data-toggle="dropdown"
                        href="#"
                        role="button">Family <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="{% url 'group:families:create' %}">Create Family</a></li>
-                        {% for family in users.families.all %}
-                            <li><a href="{% url 'group:families:details' slug=family.slug %}">{{ family.name }}</a></li>
-                        {% endfor %}
-                    <li role="separator" class="divider"></li>
-                    <li>
-{#                        <a href="{% url 'group:families:invites' %}">Invitations</a>#}
-                        <a href="{% url 'group:families:create' %}">Create New</a>
-                    </li>
-                    </ul>
+                     <ul class="dropdown-menu">
+                            {% for family in user.families.all %}
+                                <li><a href="{% url 'group:families:detail' slug=family.slug %}">{{ family.name }}</a></li>
+                            {% endfor %}
+                            <li role="separator" class="divider"></li>
+                            <li>
+{#                                <a href="{% url 'groups:families:invites' %}">Invitations {% invites_badge 'family' %}</a>#}
+                                <a href="{% url 'group:families:create' %}">Create New</a>
+                            </li>
+                        </ul>
                 </li>
             </ul>
             <div class="navbar-collapse collapse" id="navbar">
