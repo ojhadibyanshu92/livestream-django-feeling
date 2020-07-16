@@ -52,9 +52,11 @@
                        href="#"
                        role="button">Companies <span class="caret"></span></a>
                     <ul class="dropdown-menu">
+                        <li><a href="{% url 'group:companies:invites' %}">Invitations</a></li>
                         <li><a href="{% url 'group:companies:create' %}">Create company</a></li>
                         {% for company in users.companies.all %}
-                        <li><a href="{% url 'group:companies:details' slug=comapny.slug %}">{{company.name}}</a></li>
+                            <li><a href="{% url 'group:companies:details' slug=comapny.slug %}">{{ company.name }}</a>
+                            </li>
                         {% endfor %}
                     </ul>
                 </li>
@@ -66,21 +68,26 @@
                     <ul class="dropdown-menu">
                         <li><a href="{% url 'group:families:create' %}">Create Family</a></li>
                         {% for family in users.families.all %}
-                        <li><a href="{% url 'group:families:details' slug=family.slug %}">{{family.name}}</a></li>
+                            <li><a href="{% url 'group:families:details' slug=family.slug %}">{{ family.name }}</a></li>
                         {% endfor %}
+                    <li role="separator" class="divider"></li>
+                    <li>
+{#                        <a href="{% url 'group:families:invites' %}">Invitations</a>#}
+                        <a href="{% url 'group:families:create' %}">Create New</a>
+                    </li>
                     </ul>
                 </li>
             </ul>
             <div class="navbar-collapse collapse" id="navbar">
                 <nav class="nav navbar-nav navbar-right">
                     {% if not user.is_authenticated %}
-                    <li><a href="{% url 'users:login' %}">Login</a></li>
-                    <li><a href="{% url 'users:signup' %}">Signup</a></li>
+                        <li><a href="{% url 'users:login' %}">Login</a></li>
+                        <li><a href="{% url 'users:signup' %}">Signup</a></li>
                     {% else %}
-                    <li><a href="{% url 'users:dashboard' %}">Dashboard</a></li>
-                    <li><a href="{% url 'users:logout' %}">Logout</a></li>
-                </nav>
-                {% endif %}
+                        <li><a href="{% url 'users:dashboard' %}">Dashboard</a></li>
+                        <li><a href="{% url 'users:logout' %}">Logout</a></li>
+                        </nav>
+                    {% endif %}
             </div>
         </div>
     </div>
