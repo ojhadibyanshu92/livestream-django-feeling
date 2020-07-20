@@ -1,28 +1,23 @@
 {% extends "layout.html" %}
 {% load bootstrap3 %}
-<style>
-    .row {
-        margin-top: 185px;
-    }
-</style>
+
 {% block title %}Invites | {{ block.super }}{% endblock %}
 
 {% block content %}
-    <style>
-        #margin {
-            margin-top: 85px;
-        }
+      <style>
+    .row{
+        margin-top: 185px;
+    }
     </style>
     <div class="container pt">
-        <div id="margin" class="row">
+        <div class="row">
             <div class="col-md-6">
-                <ul>
+                <ul class="list-group">
                     {% for invite in object_list %}
                         <li class="list-group-item row">
-
                             <div class="pull-right">
-                                <a href="{% url 'group:companies:invite_response' code=invite.uuid response='accept' %}" class="btn btn-success"><i class="glyphicon glyphicon-ok"></i></a>
-                                <a href="{% url 'group:companies:invite_response' code=invite.uuid response='reject' %}" class="btn btn-danger"><i class="glyphicon glyphicon-remove"></i></a>
+                                <a href="{% url 'groups:companies:invite_response' code=invite.uuid response='accept' %}" class="btn btn-success"><i class="glyphicon glyphicon-ok"></i></a>
+                                <a href="{% url 'groups:companies:invite_response' code=invite.uuid response='reject' %}" class="btn btn-danger"><i class="glyphicon glyphicon-remove"></i></a>
                             </div>
                             {{ invite.company }} by {{ invite.from_user }}
                         </li>

@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'users',
     'thoughts',
     'debug_toolbar',
-    'group',
+    'groups',
 ]
 
 MIDDLEWARE = [
@@ -148,3 +148,6 @@ STATICFILES_DIRS=[os.path.join(BASE_DIR,'assets'),]
 #Authentication
 LOGIN_URL = 'users:login'
 LOGIN_REDIRECT_URL = 'users:dashboard'
+
+EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
+EMAIL_FILE_PATH = os.path.join(BASE_DIR, 'emails')

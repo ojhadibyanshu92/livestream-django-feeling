@@ -1,0 +1,38 @@
+Content-Type: multipart/alternative;
+ boundary="===============1244291587651786440=="
+MIME-Version: 1.0
+Subject: New invitation!
+From: feelings@example.com
+To: ojhadibyanshu92@gmail.com
+Date: Mon, 20 Jul 2020 12:51:45 -0000
+Message-ID: <20200720125145.19964.68141@LAPTOP-67UBLPUJ>
+
+--===============1244291587651786440==
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+
+Hi divyanshu kumar!
+
+You've been invited to join steag by .
+
+Thanks!
+
+Feelings
+
+--===============1244291587651786440==
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+
+<p>Hi divyanshu kumar!</p>
+
+<p>You've been invited to join steag by .</p>
+
+<p>Thanks!</p>
+
+<p>Feelings</p>
+
+--===============1244291587651786440==--
+
+-------------------------------------------------------------------------------

@@ -1,19 +1,19 @@
 from django import forms
-from django.core.exceptions import ValidationError
 from django.db.models import Q
+from django.contrib.auth.models import User
 
 from . import models
 
 
 class CompanyForm(forms.ModelForm):
     class Meta:
-        fields = {'name', 'description'}
+        fields = ('name', 'description')
         model = models.Company
 
 
 class FamilyForm(forms.ModelForm):
     class Meta:
-        fields = {'name', 'description'}
+        fields = ('name', 'description')
         model = models.Family
 
 

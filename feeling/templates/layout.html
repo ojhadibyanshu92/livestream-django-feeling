@@ -53,12 +53,12 @@
                        role="button">Companies <span class="caret"></span></a>
                       <ul class="dropdown-menu">
                             {% for company in user.companies.all %}
-                                <li><a href="{% url 'group:companies:detail' slug=company.slug %}">{{ company.name }}</a></li>
+                                <li><a href="{% url 'groups:companies:detail' slug=company.slug %}">{{ company.name }}</a></li>
                             {% endfor %}
                             <li role="separator" class="divider"></li>
                             <li>
-                                <a href="{% url 'group:companies:invites' %}">Invitations</a>
-                                <a href="{% url 'group:companies:create' %}">Create New</a>
+                                <a href="{% url 'groups:companies:invites' %}">Invitations</a>
+                                <a href="{% url 'groups:companies:create' %}">Create New</a>
                             </li>
                         </ul>
                 </li>
@@ -69,12 +69,12 @@
                        role="button">Family <span class="caret"></span></a>
                      <ul class="dropdown-menu">
                             {% for family in user.families.all %}
-                                <li><a href="{% url 'group:families:detail' slug=family.slug %}">{{ family.name }}</a></li>
+                                <li><a href="{% url 'groups:families:detail' slug=family.slug %}">{{ family.name }}</a></li>
                             {% endfor %}
                             <li role="separator" class="divider"></li>
                             <li>
-{#                                <a href="{% url 'groups:families:invites' %}">Invitations {% invites_badge 'family' %}</a>#}
-                                <a href="{% url 'group:families:create' %}">Create New</a>
+                                <a href="{% url 'groups:families:invites' %}">Invitations</a>
+                                <a href="{% url 'groups:families:create' %}">Create New</a>
                             </li>
                         </ul>
                 </li>
