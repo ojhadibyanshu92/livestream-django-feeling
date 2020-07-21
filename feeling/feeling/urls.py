@@ -21,7 +21,17 @@ from users import urls
 from thoughts import urls
 from groups import urls
 from django.conf import settings
+from users.serilizers import router as user_router
 
+
+from thoughts import routers as thought_routers
+
+
+
+api_urlpatterns = [
+    url(r'', include(user_router.urls)),
+    url(r'', include(thought_routers.router.urls)),
+]
 
 
 urlpatterns = [
@@ -30,6 +40,8 @@ urlpatterns = [
     url(r'^thoughts/', include('thoughts.urls',namespace='thoughts')),
     url(r'^groups/', include('groups.urls', namespace='groups')),
     url(r'^$', TemplateView.as_view(template_name='index.html'),name='home'),
+    url(r'^api/', include(api_urlpatterns)),
+    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 ]
 
 if settings.DEBUG:

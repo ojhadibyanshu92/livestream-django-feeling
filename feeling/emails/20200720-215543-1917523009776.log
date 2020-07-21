@@ -1,0 +1,38 @@
+Content-Type: multipart/alternative;
+ boundary="===============7320898208803728980=="
+MIME-Version: 1.0
+Subject: New invitation!
+From: feelings@example.com
+To: 
+Date: Mon, 20 Jul 2020 16:25:43 -0000
+Message-ID: <20200720162543.1288.74281@LAPTOP-67UBLPUJ>
+
+--===============7320898208803728980==
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+
+Hi !
+
+You've been invited to join ai by divyanshu kumar.
+
+Thanks!
+
+Feelings
+
+--===============7320898208803728980==
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+
+<p>Hi !</p>
+
+<p>You've been invited to join ai by divyanshu kumar.</p>
+
+<p>Thanks!</p>
+
+<p>Feelings</p>
+
+--===============7320898208803728980==--
+
+-------------------------------------------------------------------------------

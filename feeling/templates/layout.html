@@ -1,120 +1,98 @@
+{% load static from staticfiles %}
+{% load group_tags %}
 <!DOCTYPE html>
-{% load staticfiles %}
-
-
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta content="IE=edge" http-equiv="X-UA-Compatible">
-    <meta content="width=device-width, initial-scale=1" name="viewport">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>{% block title %}Felling{% endblock %}</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <title>{% block title %}Feelings{% endblock %}</title>
 
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+  {% block css %}{% endblock %}
+  <link rel="stylesheet" href="{% static 'css/feelings.css' %}">
 
-    <!-- Latest compiled and minified CSS -->
-    <link crossorigin="anonymous" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" rel="stylesheet">
-    <!-- Optional theme -->
-    {% block css %}{% endblock %}
-    <link crossorigin="anonymous" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
-          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" rel="stylesheet">
-    <!--    <link rel="stylesheet" href="{% static 'css/fellings.css' %}">-->
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-    <style>
-        .container {
-            margin-bottom: -10px;
-        }
-
-    </style>
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
 </head>
 <body>
-<nav class="navbar navbar-inverse navbar-fixed-top " id="navbar1">
-    <div class="container ">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
         <div class="navbar-header">
-            <button aria-controls="navbar" aria-expanded="false" class="navbar-toggle collapsed" data-target="#navbar"
-                    data-toggle="collapse" type="button">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="{% url 'home' %}">Feelings</a>
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="{% url 'home' %}">Feelings</a>
         </div>
-        <div class="navbar-collapse collapse" id="navbar-brand">
+        <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-left">
-                <li class="dropdown">
-                    <a aria-expanded="false" aria-haspopup="true" class="dropdown-toggle" data-toggle="dropdown"
-                       href="#"
-                       role="button">Companies <span class="caret"></span></a>
-                      <ul class="dropdown-menu">
+                {% if request.user.is_authenticated %}
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Companies {% invites_dot 'company' %}<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
                             {% for company in user.companies.all %}
                                 <li><a href="{% url 'groups:companies:detail' slug=company.slug %}">{{ company.name }}</a></li>
                             {% endfor %}
                             <li role="separator" class="divider"></li>
                             <li>
-                                <a href="{% url 'groups:companies:invites' %}">Invitations</a>
+                                <a href="{% url 'groups:companies:invites' %}">Invitations {% invites_badge 'company' %}</a>
                                 <a href="{% url 'groups:companies:create' %}">Create New</a>
                             </li>
                         </ul>
-                </li>
-
-                <li class="dropdown">
-                    <a aria-expanded="false" aria-haspopup="true" class="dropdown-toggle" data-toggle="dropdown"
-                       href="#"
-                       role="button">Family <span class="caret"></span></a>
-                     <ul class="dropdown-menu">
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Families {% invites_dot 'family' %}<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
                             {% for family in user.families.all %}
                                 <li><a href="{% url 'groups:families:detail' slug=family.slug %}">{{ family.name }}</a></li>
                             {% endfor %}
                             <li role="separator" class="divider"></li>
                             <li>
-                                <a href="{% url 'groups:families:invites' %}">Invitations</a>
+                                <a href="{% url 'groups:families:invites' %}">Invitations {% invites_badge 'family' %}</a>
                                 <a href="{% url 'groups:families:create' %}">Create New</a>
                             </li>
                         </ul>
-                </li>
+                    </li>
+                {% endif %}
             </ul>
-            <div class="navbar-collapse collapse" id="navbar">
-                <nav class="nav navbar-nav navbar-right">
-                    {% if not user.is_authenticated %}
-                        <li><a href="{% url 'users:login' %}">Login</a></li>
-                        <li><a href="{% url 'users:signup' %}">Signup</a></li>
-                    {% else %}
-                        <li><a href="{% url 'users:dashboard' %}">Dashboard</a></li>
-                        <li><a href="{% url 'users:logout' %}">Logout</a></li>
-                        </nav>
-                    {% endif %}
-            </div>
-        </div>
-    </div>
-</nav>
+            <ul class="nav navbar-nav navbar-right">
+            {% if not user.is_authenticated %}
+                <li><a href="{% url 'users:login' %}">Login</a></li>
+                <li><a href="{% url 'users:signup' %}">Sign up</a></li>
+            {% else %}
+                <li><a href="{% url 'users:dashboard' %}">Dashboard</a></li>
+                <li><a href="{% url 'users:logout' %}">Logout</a></li>
+            {% endif %}
+            </ul>
+        </div><!--/.navbar-collapse -->
+      </div>
+    </nav>
 
-<div id="content">
     {% block content %}{% endblock %}
-</div>
 
-<div class="container">
-    <hr>
+    <div class="container">
+     <hr>
 
-    <footer>
+      <footer>
         <p>&copy; 2016 Company, Inc.</p>
-    </footer>
-</div>
+      </footer>
+    </div>
 
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-<!--    <script src="js/bootstrap.min.js"></script>-->
-<!-- Latest compiled and minified JavaScript -->
-<script crossorigin="anonymous"
-        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-        src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-{% block js %}{% endblock %}
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    {% block js %}{% endblock %}
 </body>
-
 </html>
